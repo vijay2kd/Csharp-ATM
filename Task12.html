@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+let accountNumber;
+        let currentBalance = 0;
+
+        function createAccount() {
+            accountNumber = prompt("Enter your account number:");
+        }
+
+        function depositAmount() {
+            let deposit = parseFloat(prompt("Enter the amount to deposit:"));
+            currentBalance += deposit;
+            alert(`Successfully deposited $${deposit}`);
+        }
+
+        function withdrawAmount() {
+            let withdrawal = parseFloat(prompt("Enter the amount to withdraw:"));
+
+            if (currentBalance >= withdrawal) {
+                currentBalance -= withdrawal;
+                alert(`Successfully withdrawn $${withdrawal}`);
+            } else {
+                alert("Insufficient funds!");
+            }
+        }
+
+        function checkBalance() {
+            alert(`Current Balance: $${currentBalance}`);
+        }
+
+        function performTransaction() {
+            let option = parseInt(
+                prompt(
+                    "Choose an option:\n1. Create Account\n2. Deposit\n3. Withdraw\n4. Check Balance\n5. Exit"
+                )
+            );
+
+            switch (option) {
+                case 1:
+                    createAccount();
+                    break;
+                case 2:
+                    depositAmount();
+                    break;
+                case 3:
+                    withdrawAmount();
+                    break;
+                case 4:
+                    checkBalance();
+                    break;
+                case 5:
+                    alert("Thank you for using our banking system. Goodbye!");
+                    return;
+                default:
+                    alert("Invalid option. Please try again.");
+                    break;
+            }
+
+            performTransaction();
+        }
+
+        performTransaction();</script>
+</body>
+</html>
